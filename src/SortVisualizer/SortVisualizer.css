@@ -1,0 +1,23 @@
+.wrap {
+    
+    position: absolute;
+    bottom: 5%;
+
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+
+    text-align: center;
+
+    background-color: #282c34;
+    border-radius: 5px;
+}
+  
+.array {
+    width: 2px;
+    display: inline-block;
+    margin: 0 1px;
+    background-color: #61dafb;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
