@@ -1,7 +1,7 @@
 import React from 'react';
-import "./SortVisualizer.css";
+import "./VisualizerMain.css";
 
-export default class SortVisualizer extends React.Component {
+export default class VisualizerMain extends React.Component {
 
     constructor(props){
         

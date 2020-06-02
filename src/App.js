@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import SortVisualizer from './SortVisualizer/SortVisualizer';
+import VisualizerMain from './VisualizerMain/VisualizerMain';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
           Sorting Visualizer
         </h1>
       </div>
-      <SortVisualizer></SortVisualizer>
+      <VisualizerMain></VisualizerMain>
     </div>
   );
 }
