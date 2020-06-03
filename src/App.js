@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import VisualizerMain from './VisualizerMain/VisualizerMain';
+import Toolbar from './Toolbar/Toolbar';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           Sorting Visualizer
         </h1>
       </div>
+      <Toolbar></Toolbar>
       <VisualizerMain></VisualizerMain>
     </div>
   );

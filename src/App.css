@@ -25,6 +25,13 @@
   height: 5%;
 }
 
+.App{
+  background-color: #282c34;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
 .title {
   color: #61dafb;
   margin: 5px;

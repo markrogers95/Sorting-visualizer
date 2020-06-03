@@ -22,7 +22,7 @@ export default class VisualizerMain extends React.Component {
 
         for (var i = 0; i < 200; i++){
 
-            array.push(randInt(25, window.innerHeight - 100));
+            array.push(randInt(25, window.innerHeight - 170));
 
         }
 

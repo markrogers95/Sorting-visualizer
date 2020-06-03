@@ -1,0 +1,21 @@
+.toolbar-wrap{
+    
+    width: 95%;
+    margin-left: 2.5%;
+    background-color: black;
+    text-align: center;
+    min-height: 5%;
+    font-size: calc(4px + 2vmin);
+    position: relative;
+    border-radius: 50px;
+}
+
+.item{
+    color: #61dafb;
+    display: inline-block;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    padding-right: 1%;
+    padding-left: 5%;
+    text-align: top;
+}
