@@ -21,8 +21,14 @@ export default class Toolbar extends React.Component {
                 </div>
                 <input type="range" min="0" max="100"/>
                 <div className="item">
-                    Algorithm
+                    Algorithm:
                 </div>
+                <select name="algorithms" id="algorithms">
+                    <optgroup>
+                        <option value="mergesort" className="item">Mergesort</option>
+                        <option value="quicksort" className="item">Quicksort</option>
+                    </optgroup>
+                </select>
             </div>
         );
     }
