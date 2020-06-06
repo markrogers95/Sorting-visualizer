@@ -1,35 +1,85 @@
 import React from 'react';
+import { connect } from "react-redux"
+import {setArray } from "../reducers/array";
 import "./Toolbar.css";
 
-export default class Toolbar extends React.Component {
+class Toolbar extends React.Component {
 
     constructor(props){
 
         super(props);
 
+        //this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
+
+    componentDidMount() {
+
+        const { generateArray } = this.props;
+        generateArray(50);
+
+        document.getElementById("slide").value = 50;
+    }
+
+    handleChange(event) {
+        const { generateArray } = this.props;
+    
+        generateArray(Math.floor((parseInt(event.target.value) + 4)));
+      }
 
     render(){
 
+        const {
+            array,
+            generateArray } = this.props;
+
         return (
             <div className="toolbar-wrap">
-                <div className="item">
-                    Generate Array!
-                </div>
-                <div className="item">
-                    Array size:
-                </div>
-                <input type="range" min="0" max="100"/>
-                <div className="item">
-                    Algorithm:
-                </div>
-                <select name="algorithms" id="algorithms">
-                    <optgroup>
-                        <option value="mergesort" className="item">Mergesort</option>
-                        <option value="quicksort" className="item">Quicksort</option>
-                    </optgroup>
-                </select>
+                <ul className="toolbar">
+                    <li className="item">
+                        <button 
+                                onClick={() => generateArray(array.length)}>
+                            generate new array!
+                        </button>
+                    </li>
+                    <li className="item">
+                        <button>
+                            sort array!
+                        </button>
+                    </li>
+                    <li className="item">
+                        Array size:
+                        <input 
+                                id="slide"
+                                type="range" 
+                                min="9" 
+                                max="110"
+                                onChange={this.handleChange}/>
+                    </li>
+                    <li className="item">
+                        Mergesort
+                    </li>
+                </ul>
             </div>
         );
     }
 }
+
+const mapStateToProps = ({
+    array,}) =>
+    ({array});
+
+const mapDispatchToProps = () => dispatch => ({
+    generateArray: (length) => {
+        let array = [];
+
+        while (array.length < length){
+            array.push(Math.floor(Math.random() * (0.9 * window.innerHeight - 75) + 75));
+        }
+
+        dispatch(setArray(array));
+    }
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);

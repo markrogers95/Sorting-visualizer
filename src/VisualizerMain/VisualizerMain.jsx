@@ -1,51 +1,41 @@
 import React from 'react';
+import { connect } from "react-redux";
 import "./VisualizerMain.css";
 
-export default class VisualizerMain extends React.Component {
+class VisualizerMain extends React.Component {
 
     constructor(props){
         
         super(props);
 
-        this.state = { array: [], };
-
-    }
-
-    componentDidMount() {
-
-        this.resetArray();
-    }
-
-    resetArray() {
-
-        const array = [];
-
-        for (var i = 0; i < 200; i++){
-
-            array.push(randInt(25, window.innerHeight - 170));
-
-        }
-
-        this.setState({array});
     }
 
     render() {
 
-        const {array} = this.state;
+        const {array} = this.props;
+
+        const width = Math.floor(((0.8 * window.innerWidth) - 200 - array.length) / (array.length) ) - 1;
+        const arrWidth = `${width}px`
+
 
         return (
             
-            <div className="wrap">
+            <div className="wrap" id="wrap">
                 {array.map((value, idx) => (
-                    <div className="array" key={idx} style={{height: `${value}px`}}></div>
+                    <div    className="array" 
+                            key={idx} 
+                            style={{height: `${value}px`, width: arrWidth}}></div>
             ))}
             </div> 
         );
     }
 }
 
-function randInt(min, max) {
+const mapStateToProps = ({
+    array
+}) =>
+({array});
 
-    return Math.floor(Math.random() * (max - min + 1) - min);
+const mapDispatchToProps = () => dispatch => ({});
 
-}
+export default connect(mapStateToProps, mapDispatchToProps)(VisualizerMain);
