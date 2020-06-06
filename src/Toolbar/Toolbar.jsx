@@ -48,7 +48,9 @@ class Toolbar extends React.Component {
                         </button>
                     </li>
                     <li className="item">
-                        Array size:
+                        <button>
+                            resize array:
+                        </button>
                         <input 
                                 id="slide"
                                 type="range" 
@@ -57,7 +59,9 @@ class Toolbar extends React.Component {
                                 onChange={this.handleChange}/>
                     </li>
                     <li className="item">
-                        Mergesort
+                        <button>
+                            mergesort
+                        </button>
                     </li>
                 </ul>
             </div>
