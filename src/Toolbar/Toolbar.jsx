@@ -47,7 +47,7 @@ class Toolbar extends React.Component {
                             sort array!
                         </button>
                     </li>
-                    <li className="item">
+                    <li className="item resize">
                         <button>
                             resize array:
                         </button>

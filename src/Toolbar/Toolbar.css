@@ -31,6 +31,7 @@
 
 input{
     margin-left: 2%;
+    cursor: pointer;
 }
 
 button{
@@ -51,6 +52,12 @@ button:hover{
     color:#61dafb;
     border-color:#61dafb;
     cursor: pointer;
+}
+
+.resize:hover button{
+    cursor: initial;
+    color:#61dafb;
+    border-color:#61dafb;
 }
 
 @media all and (max-width:30em){
