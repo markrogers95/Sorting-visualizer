@@ -16,14 +16,16 @@
 
 .array-left{
     display: inline-block;
-    margin-left: 5%;
-    width: 35%;
+    
+    margin-left: 2.5%;
+    width: 50%;
 }
 
 .array-right{
     display: inline-block;
-    margin-right: 5%;
-    width: 55%;
+    
+    margin-right: 0%;
+    width: 45%;
     text-align: right;
 }
 
@@ -44,14 +46,17 @@
 
 input{
     display: inline-block;
+    
     cursor: pointer;
-    max-width: 110px;
+    
+    max-width: 100px;
     margin: 0;
     margin-left: 10px;
 }
 
 .regularButton{
     display:inline-block;
+    
     padding:0.46em 1.6em;
     border: 1px solid white;
     margin:0 0.5em 0.5em 0;
@@ -90,9 +95,6 @@ button:hover{
     border-color:#61dafb;
 }
 
-.sort-array{
-    padding-right: 100px !important;
-}
 @media all and (max-width:30em){
     button{
         display:block;

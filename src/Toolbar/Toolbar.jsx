@@ -3,6 +3,9 @@ import { connect } from "react-redux"
 
 import { setArray } from "../reducers/array";
 import { setMethod } from "../reducers/method";
+import { setCurrentSorted } from "../reducers/sorted";
+
+import bubblesort from "../bubblesort.js";
 
 import "./Toolbar.css";
 
@@ -19,9 +22,9 @@ class Toolbar extends React.Component {
     componentDidMount() {
 
         const { generateArray } = this.props;
-        generateArray(50);
+        generateArray(100);
 
-        document.getElementById("slide").value = 50;
+        document.getElementById("slide").value = 100;
     }
 
     handleClick(method) {
@@ -43,7 +46,8 @@ class Toolbar extends React.Component {
         const {
             array,
             method,
-            generateArray } = this.props;
+            generateArray,
+            sortMethod } = this.props;
 
         return (
             <div className="toolbar-wrap">
@@ -51,7 +55,7 @@ class Toolbar extends React.Component {
                 <div className = "item">
                     <button className = "regularButton" 
                             onClick = {() => generateArray(array.length)}>
-                                generate new array!
+                                generate new array
                     </button>
                 </div>
                 <div className = "item">
@@ -61,18 +65,19 @@ class Toolbar extends React.Component {
                             id="slide"
                             type="range" 
                             min="9" 
-                            max="110"
+                            max = "200"
                             onChange={this.handleChange}/>
                     </button>
                 </div>
-                </div>
-                <div className = "array-right">
-                    { method ?
+                { method ?
                     <div className = "item sort-array">
-                        <button className = "regularButton">
+                        <button className = "regularButton"
+                                onClick = {() => sortMethod(array, method)}>
                             sort array!
                         </button>
                     </div> : null}
+                </div>
+                <div className = "array-right">
                     <div className = "item">
                         <button
                             onClick = {() => this.handleClick("mergesort")}
@@ -85,6 +90,20 @@ class Toolbar extends React.Component {
                             onClick = {() => this.handleClick("quicksort")}
                             className={this.props.method === "quicksort" ? "activeButton" : "regularButton" } >
                                 quicksort
+                        </button>
+                    </div>
+                    <div className = "item">
+                        <button
+                            onClick = {() => this.handleClick("radixsort")}
+                            className={this.props.method === "radixsort" ? "activeButton" : "regularButton" } >
+                                radix-sort
+                        </button>
+                    </div>
+                    <div className = "item">
+                        <button
+                            onClick = {() => this.handleClick("bubblesort")}
+                            className={this.props.method === "bubblesort" ? "activeButton" : "regularButton" } >
+                                bubblesort
                         </button>
                     </div>
                 </div>
@@ -115,6 +134,15 @@ const mapDispatchToProps = () => dispatch => ({
     updateMethod: (method) => {
 
         dispatch( setMethod(method) );
+    },
+
+    sortMethod: (array, method) => {
+        
+        let sortOption = method === "bubblesort" ? bubblesort : null;
+
+        dispatch(setCurrentSorted([]));
+        
+        sortOption(array, dispatch);
     },
 
 });
