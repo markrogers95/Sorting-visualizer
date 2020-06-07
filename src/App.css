@@ -13,27 +13,33 @@
   margin: 0px;
   padding: 0px;
   height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.title-wrap{
+  position: relative;
+  width: 100%;
+  text-align: center;
+  max-height: 100px;
 }
 
 .title{
   position: relative;
-  top: 0;
+  left: 35%;
+  height: auto;
+  width: 30%;
 
-  height: 50px;
-  width: 100%;
+  margin: 10px 0 15px 0;
   
   color: #61dafb;
   font-weight: 300;
-  font-size: 36px;
-  text-align: center;
-  vertical-align: center;
-  
+  font-size: 42px;
 
-  margin: 0px;
-  border: none;
-  padding: 0;
-  
-  background-color: #282c34;
+  border-radius: 10px;
+    
+  background-color: black;
 }
 
 @keyframes App-logo-spin {

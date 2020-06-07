@@ -1,4 +1,4 @@
-.toolbar{
+.toolbar-wrap{
     position: relative;
     left: 2.5%;
 
@@ -10,13 +10,26 @@
     background-color: black;
     border-radius: 10px;
 
-    text-align: center;
+    text-align: left;
     
+}
+
+.array-left{
+    display: inline-block;
+    margin-left: 5%;
+    width: 35%;
+}
+
+.array-right{
+    display: inline-block;
+    margin-right: 5%;
+    width: 55%;
+    text-align: right;
 }
 
 .item{
     color: white;
-    width: 25%;
+    width: auto;
 
     display: inline-block;
     text-align: center;
@@ -30,20 +43,37 @@
 }
 
 input{
-    margin-left: 2%;
+    display: inline-block;
     cursor: pointer;
+    max-width: 110px;
+    margin: 0;
+    margin-left: 10px;
 }
 
-button{
+.regularButton{
     display:inline-block;
     padding:0.46em 1.6em;
     border: 1px solid white;
-    margin:0 0.2em 0.2em 0;
+    margin:0 0.5em 0.5em 0;
     border-radius:0.5em;
     box-sizing: border-box;
     text-decoration:none;
     font-size: 15px;
     color:white;
+    background-color:black;
+    text-align:center;
+}
+
+.activeButton{
+    color:#61dafb;
+    border-color:#61dafb;
+    display:inline-block;
+    padding:0.46em 1.6em;
+    margin:0 0.2em 0.2em 0;
+    border-radius:0.5em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-size: 15px;
     background-color:black;
     text-align:center;
 }
@@ -60,6 +90,9 @@ button:hover{
     border-color:#61dafb;
 }
 
+.sort-array{
+    padding-right: 100px !important;
+}
 @media all and (max-width:30em){
     button{
         display:block;
