@@ -114,11 +114,13 @@ class Toolbar extends React.Component {
 
 const mapStateToProps = ({
     array,
-    method
+    method,
+    currentSorted
     }) =>
     ({
     array,
-    method});
+    method,
+    currentSorted,});
 
 const mapDispatchToProps = () => dispatch => ({
     generateArray: (length) => {
@@ -127,7 +129,7 @@ const mapDispatchToProps = () => dispatch => ({
         while (array.length < length){
             array.push(Math.floor(Math.random() * (0.95 * window.innerHeight - 120) + 120));
         }
-
+        dispatch(setCurrentSorted([]));
         dispatch(setArray(array));
     },
 
