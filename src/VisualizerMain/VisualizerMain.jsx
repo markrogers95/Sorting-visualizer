@@ -21,19 +21,22 @@ class VisualizerMain extends Component {
 
         return (
             <div id="wrap" className="wrap">
-              { array.length ? array.map((value, idx) => {
-                const backgroundColor = swappingElements.includes(idx) ?
-                    "#39ff14" : compareElements.includes(idx) ?
-                      "#39ff14" : currentSorted.includes(idx) ?
-                          "#F603A3" : "#61dafb";
-                return <div
-                  className="array"
-                  key={idx}
-                  style={{height: `${value}px`, 
-                          width: arrWidth,
-                          backgroundColor: backgroundColor}}>
-                </div>
-              }) : null
+              { array.map((value, idx) => {
+                  const backgroundColor = swappingElements.includes(idx) ?
+                  "#39ff14" : compareElements.includes(idx) ?
+                  "#39ff14" : currentSorted.includes(idx) ?
+                  "#F603A3" : "#61dafb";
+
+                return (
+                    <div
+                        className="array"
+                        key={idx}
+                        style={{height: `${value}px`, 
+                        width: arrWidth,
+                        backgroundColor: backgroundColor}}>
+                    </div>
+                )
+              })
               }
             </div>
         );
