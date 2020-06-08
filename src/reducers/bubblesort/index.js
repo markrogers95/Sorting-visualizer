@@ -2,11 +2,11 @@ import { createAction, handleActions } from "redux-actions";
 
 const initialState = [];
 
-export const SET_CURRENT_BUBBLETWO = "SET_CURRENT_BUBBLETWO";
-export const setCurrentBubbleTwo = createAction(SET_CURRENT_BUBBLETWO);
+export const SET_COMPARE_ELEMENTS = "SET_COMPARE_ELEMENTS";
+export const setCompareElements = createAction(SET_COMPARE_ELEMENTS);
 
-export const currentBubbleTwo = handleActions({
-  SET_CURRENT_BUBBLETWO: (state, { payload }) => {
+export const compareElements = handleActions({
+  SET_COMPARE_ELEMENTS: (state, { payload }) => {
     return payload;
   },
 }, initialState);

@@ -1,72 +1,85 @@
 import { setArray } from "./reducers/array";
-import { setCurrentBubbleTwo } from "./reducers/bubblesort";
+import { setCompareElements } from "./reducers/bubblesort";
 import { setCurrentSorted } from "./reducers/sorted";
-import { setCurrentSwappers } from "./reducers/swap";
+import { setSwappingElements } from "./reducers/swap";
 
-function bubbleSort(stateArray, dispatch) {
+function bubbleSort(array, dispatch) {
+  
+  //time the sort
+  var t0 = performance.now();
 
-    let speed = 50 / stateArray.length > 1 ? 50 / stateArray.length : 1,
-        array = stateArray.slice(0),
-        toDispatch = [],
-        sorted = false,
-        round = 0;
+  //sort is too quick so store all sort actions
+  let sortActions = [], sorted = false, round = 0;
 
-    while (!sorted) {
+  while (!sorted) {
 
-    sorted = true;
+  sorted = true;
     
-    for (let i = 0; i < array.length - 1 - round; i++) {
+  for (let i = 0; i < array.length - 1 - round; i++) {
 
-        toDispatch.push([i, i + 1]);
+    sortActions.push([i, i + 1]);
 
-        if (array[i] > array[i + 1]) {
+    if (array[i] > array[i + 1]) {
 
-            toDispatch.push([i, i + 1, true]);
+      sortActions.push([i, i + 1, true]);
             
-            let temp = array[i];
+      let temp = array[i];
         
-            array[i] = array[i + 1];
-            array[i + 1] = temp;
+      array[i] = array[i + 1];
+      array[i + 1] = temp;
         
-            sorted = false;
+      sorted = false;
         
-            toDispatch.push(array.slice(0));
-            toDispatch.push([]);
-      }
+      sortActions.push(array.slice(0));
+      sortActions.push([]);
     }
-
-    toDispatch.push([true, array.length - 1 - round]);
-    
-    round++;
   }
 
-  handleDispatch(toDispatch, dispatch, array, speed);
+  sortActions.push([true, array.length - 1 - round]);  
+  round++;
+  }
+
+  //log time - for stats component?
+  var t1 = performance.now();
+  console.log("Bubblesort took " + (t1 - t0) + " milliseconds on " + 
+              "array of length " + (array.length));
+
+  //pass all resultant actions to dispatch to "animate"
+  passSortToDispatch(sortActions, dispatch, array);
   
   return array;
 }
 
-function handleDispatch(toDispatch, dispatch, array, speed) {
+function passSortToDispatch(sortActions, dispatch, array) {
 
-    if (!toDispatch.length) {
+  //set speed proportional to length - to a point
+  const speed = 100 / array.length > 1 ? 100 / array.length : 1;
 
-        dispatch(setCurrentBubbleTwo(array.map((num, index) => index)));
+  //if we have shifted everything off the actions list we can return
+  if (!sortActions.length) {
 
-        setTimeout(() => { dispatch(setCurrentBubbleTwo([]));
-            dispatch(setCurrentSorted(array.map((num, index) => index)));
-            }, speed);
+    dispatch(setCompareElements(array.map((num, index) => index)));
+
+    setTimeout(() => { dispatch(setCompareElements([]));
+      dispatch(setCurrentSorted(array.map((num, index) => index)));
+      }, speed);
 
     return;
-    }
+  }
+    
+  //set the relevent action based on what is stored
+  let dispatchFunction = sortActions[0].length > 3 ?
+    setArray : sortActions[0].length === 3 || sortActions[0].length === 0 ?
+    setSwappingElements : sortActions[0].length === 2 && typeof sortActions[0][0] === "boolean" ?
+    setCurrentSorted : setCompareElements;
 
-    let dispatchFunction = toDispatch[0].length > 3 ?
-      setArray : toDispatch[0].length === 3 || toDispatch[0].length === 0 ?
-        setCurrentSwappers : toDispatch[0].length === 2 && typeof toDispatch[0][0] === "boolean" ?
-          setCurrentSorted : setCurrentBubbleTwo;
-
-    dispatch(dispatchFunction(toDispatch.shift()));
-    setTimeout(() => {
-        handleDispatch(toDispatch, dispatch, array, speed);
+  //dispatch the relevent actions based on what is stored
+  dispatch(dispatchFunction(sortActions.shift()));
+  setTimeout(() => {passSortToDispatch(sortActions, dispatch, array, speed);
     }, speed);
 }
 
 export default bubbleSort;
+
+//maybe incorporate dispatch into sort and setTimeout() to control
+//  otherwise is too quick

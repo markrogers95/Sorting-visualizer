@@ -64,7 +64,7 @@ class Toolbar extends React.Component {
                         <input 
                             id="slide"
                             type="range" 
-                            min="9" 
+                            min="11" 
                             max = "200"
                             onChange={this.handleChange}/>
                     </button>
