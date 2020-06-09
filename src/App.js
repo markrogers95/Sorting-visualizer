@@ -8,9 +8,16 @@ function Main() {
   return (
     <div className="App">
       <div className="title-wrap">
-        <h2 className="title">
-          Sorting Visualizer!
-        </h2>
+        <div className = "left">
+          <h2 className="title  left">
+            Sorting Visualizer!
+          </h2>
+        </div>
+        <div className = "right">
+          <h3 className="title right">
+            Algorithms
+          </h3>
+        </div>
       </div>
       <Toolbar></Toolbar>
       <VisualizerMain></VisualizerMain>

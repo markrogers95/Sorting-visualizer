@@ -23,9 +23,9 @@ class VisualizerMain extends Component {
             <div id="wrap" className="wrap">
               { array.map((value, idx) => {
                   const backgroundColor = swappingElements.includes(idx) ?
-                  "#39ff14" : compareElements.includes(idx) ?
+                  "#F603A3" : compareElements.includes(idx) ?
                   "#39ff14" : currentSorted.includes(idx) ?
-                  "#F603A3" : "#61dafb";
+                  "#61dafb" : "#ff4f00";
 
                 return (
                     <div
