@@ -6,6 +6,7 @@ import { setMethod } from "../reducers/method";
 import { setCurrentSorted } from "../reducers/sorted";
 
 import bubblesort from "../sorting-methods/bubblesort";
+import mergesort from "../sorting-methods/mergesort";
 
 import "./Toolbar.css";
 
@@ -129,6 +130,7 @@ const mapDispatchToProps = () => dispatch => ({
         while (array.length < length){
             array.push(Math.floor(Math.random() * (5 * window.innerHeight - 4200) + 4200));
         }
+        console.log(array);
         dispatch(setCurrentSorted([]));
         dispatch(setArray(array));
     },
@@ -140,7 +142,8 @@ const mapDispatchToProps = () => dispatch => ({
 
     sortMethod: (array, method) => {
         
-        let sortOption = method === "bubblesort" ? bubblesort : null;
+        let sortOption = method === "bubblesort" ? bubblesort :
+                method === "mergesort" ? mergesort : null;
 
         dispatch(setCurrentSorted([]));
         

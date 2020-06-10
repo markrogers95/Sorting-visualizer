@@ -6,7 +6,7 @@ import { setSwappingElements } from "../reducers/swap";
 function passBubbleSortToDispatch(sortActions, dispatch, array) {
 
     //set speed proportional to length - to a point
-    const speed = 100 / array.length > 1 ? 100 / array.length : 1;
+    const speed = 300 / array.length > 1 ? 300 / array.length : 1;
   
     //if we have shifted everything off the actions list we can return
     if (!sortActions.length) {
@@ -31,6 +31,11 @@ function passBubbleSortToDispatch(sortActions, dispatch, array) {
 
     setTimeout(() => {passBubbleSortToDispatch(sortActions, dispatch, array, speed);
         }, speed);
-}
+};
 
-export default passBubbleSortToDispatch;
+function passMergeSortToDispatch(array, dispatch){
+    
+};
+
+
+export {passBubbleSortToDispatch, passMergeSortToDispatch};
