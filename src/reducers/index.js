@@ -5,6 +5,7 @@ import { method } from "./method";
 import { compareElements } from "./bubblesort";
 import { swappingElements } from "./swap";
 import { currentSorted } from "./sorted";
+import { merge } from "./mergesort";
 
 export default combineReducers({
     array, 
@@ -12,4 +13,5 @@ export default combineReducers({
     compareElements,
     swappingElements,
     currentSorted,
+    merge,
 });
