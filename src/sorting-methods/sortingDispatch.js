@@ -44,7 +44,7 @@ function passMergeSortToDispatch(sortActions, dispatch, array) {
 
     dispatch(setMerge(array.map((num, index) => index)));
     setTimeout(() => {dispatch(setMerge([]));
-      dispatch(setCurrentSorted(array.map((num, index) => index)));
+    dispatch(setCurrentSorted(array.map((num, index) => index)));
         }, speed);
   
     return;
@@ -74,6 +74,10 @@ function passMergeSortToDispatch(sortActions, dispatch, array) {
 
   setTimeout(() => {passMergeSortToDispatch(sortActions, dispatch, array, speed);
     }, speed);
-}
+};
 
-export {passBubbleSortToDispatch, passMergeSortToDispatch};
+function passQuickSortToDispatch(sortActions, dispatch, array){
+
+};
+
+export {passBubbleSortToDispatch, passMergeSortToDispatch, passQuickSortToDispatch};

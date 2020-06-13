@@ -7,6 +7,7 @@ import { setCurrentSorted } from "../reducers/sorted";
 
 import bubblesort from "../sorting-methods/bubblesort";
 import mergePickUp from "../sorting-methods/mergesort";
+import quicksortPickUp from "../sorting-methods/quicksort";
 
 import "./Toolbar.css";
 
@@ -143,7 +144,8 @@ const mapDispatchToProps = () => dispatch => ({
     sortMethod: (array, method) => {
         
         let sortOption = method === "bubblesort" ? bubblesort :
-                method === "mergesort" ? mergePickUp : null;
+                method === "mergesort" ? mergePickUp : 
+                method === "quicksort" ? quicksortPickUp : null;
 
         dispatch(setCurrentSorted([]));
         

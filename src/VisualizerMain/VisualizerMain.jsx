@@ -26,8 +26,8 @@ class VisualizerMain extends Component {
                   const backgroundColor = swappingElements.includes(idx) ?
                   "#F603A3" : compareElements.includes(idx) ?
                   "#39ff14" : currentSorted.includes(idx) ?
-                  "#61dafb" : /*merge.includes(idx) ?
-                  "#FFFFFF" : */"#ff4f00";
+                  "#61dafb" : merge.includes(idx) ?
+                  "#FFFFFF" : "#ff4f00";
 
                 return (
                     <div
