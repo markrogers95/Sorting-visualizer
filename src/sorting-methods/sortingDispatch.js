@@ -3,6 +3,7 @@ import { setCompareElements } from "../reducers/bubblesort";
 import { setCurrentSorted } from "../reducers/sorted";
 import { setSwappingElements } from "../reducers/swap";
 import { setMerge } from "../reducers/mergesort";
+import { currentQuickTwo, pivot, setPivot, setCurrentQuickTwo } from "../reducers/quicksort";
 
 function passBubbleSortToDispatch(sortActions, dispatch, array) {
 
@@ -78,6 +79,28 @@ function passMergeSortToDispatch(sortActions, dispatch, array) {
 
 function passQuickSortToDispatch(sortActions, dispatch, array){
 
+  const speed = 600 / array.length > 1 ? 600 / array.length : 1;
+
+  if (!sortActions.length) {
+
+    dispatch(setPivot(null));
+    setTimeout(() => {dispatch(setSwappingElements([]));}, 900);
+
+    return;
+
+  }
+
+  let dispatchFunction = !(sortActions[0] instanceof Array) ?
+      setPivot : sortActions[0].length > 3 ?
+      setArray : sortActions[0].length !== 2 ?
+      setSwappingElements : sortActions[0].length === 2 && typeof sortActions[0][0] === "boolean" ?
+      setCurrentSorted : setCurrentQuickTwo;
+
+    dispatch(dispatchFunction(sortActions.shift()));
+
+    setTimeout(() => {passQuickSortToDispatch(sortActions, dispatch, array, speed);
+    }, speed);
+  
 };
 
 export {passBubbleSortToDispatch, passMergeSortToDispatch, passQuickSortToDispatch};
