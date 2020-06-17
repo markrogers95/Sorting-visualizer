@@ -131,7 +131,6 @@ const mapDispatchToProps = () => dispatch => ({
         while (array.length < length){
             array.push(Math.floor(Math.random() * (5 * window.innerHeight - 4200) + 4200));
         }
-        console.log(array);
         dispatch(setCurrentSorted([]));
         dispatch(setArray(array));
     },

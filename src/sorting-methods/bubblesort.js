@@ -2,11 +2,10 @@ import {passBubbleSortToDispatch} from "./sortingDispatch";
 
 function bubbleSort(array, dispatch) {
   
-  //time the sort
-  var t0 = performance.now();
+  let t0 = performance.now(),
+      sortActions = [], sorted = false, round = 0;
 
-  //sort is too quick so store all sort actions
-  let sortActions = [], sorted = false, round = 0;
+  sortActions.push(array.slice(0));
 
   while (!sorted) {
 
@@ -36,18 +35,13 @@ function bubbleSort(array, dispatch) {
   round++;
   }
 
-  //log time - for stats component?
-  var t1 = performance.now();
+  let t1 = performance.now();
   console.log("Bubblesort took " + (t1 - t0) + " milliseconds on " + 
               "array of length " + (array.length));
 
-  //pass all resultant actions to dispatch to "animate"
   passBubbleSortToDispatch(sortActions, dispatch, array);
   
   return array;
 }
 
 export default bubbleSort;
-
-//maybe incorporate dispatch into sort and setTimeout() to control
-//  otherwise is too quick
