@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from "react-redux";
 import "./VisualizerMain.css";
+import { indices } from '../reducers/quicksort';
 
 class VisualizerMain extends Component {
 
@@ -15,7 +16,7 @@ class VisualizerMain extends Component {
                compareElements,
                currentSorted,
                merge,
-               currentQuickTwo,
+               indices,
                pivot,} = this.props;
 
         const width = Math.floor(((0.8 * window.innerWidth) - 200 - array.length) / (array.length) ) - 1;
@@ -27,7 +28,7 @@ class VisualizerMain extends Component {
               { array.map((value, idx) => {
                   const backgroundColor = swappingElements.includes(idx) ?
                   "#F603A3" : compareElements.includes(idx) || 
-                              currentQuickTwo.includes(idx) || merge.includes(idx) ?
+                              indices.includes(idx) || merge.includes(idx) ?
                   "#39ff14" : pivot === idx ?
                   "#FFFFFF" : currentSorted.includes(idx) ?   
                   "#61dafb" : "#ff4f00";
@@ -54,7 +55,7 @@ const mapStateToProps = ({
     swappingElements,
     currentSorted,
     merge,
-    currentQuickTwo,
+    indices,
     pivot,
 }) =>
 ({array,
@@ -62,7 +63,7 @@ const mapStateToProps = ({
   swappingElements,
   currentSorted,
   merge,
-  currentQuickTwo,
+  indices,
   pivot,});
 
 const mapDispatchToProps = () => dispatch => ({});
