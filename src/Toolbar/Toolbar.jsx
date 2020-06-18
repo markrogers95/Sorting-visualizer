@@ -96,9 +96,9 @@ class Toolbar extends React.Component {
                     </div>
                     <div className = "item">
                         <button
-                            onClick = {() => this.handleClick("radixsort")}
-                            className={this.props.method === "radixsort" ? "activeButton" : "regularButton" } >
-                                radix-sort
+                            onClick = {() => this.handleClick("heapsort")}
+                            className={this.props.method === "heapsort" ? "activeButton" : "regularButton" } >
+                                heapsort
                         </button>
                     </div>
                     <div className = "item">

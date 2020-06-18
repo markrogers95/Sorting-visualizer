@@ -1,7 +1,6 @@
 import React, { Component} from 'react';
 import { connect } from "react-redux";
 import "./VisualizerMain.css";
-import { indices } from '../reducers/quicksort';
 
 class VisualizerMain extends Component {
 
