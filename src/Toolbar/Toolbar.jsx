@@ -24,34 +24,25 @@ class Toolbar extends React.Component {
     }
 
     componentDidMount() {
-
         const { generateArray } = this.props;
-        generateArray(100);
-
+        generateArray(50);
         document.getElementById("slide").value = 100;
     }
 
     handleClick(method) {
-
         const{ updateMethod } = this.props;
         updateMethod(method);
         console.log(this.props.method);
-
     }
 
     handleChange(event) {
-        
         const { generateArray } = this.props;
         generateArray(Math.floor((parseInt(event.target.value) + 4)));
       }
 
     render(){
-
-        const {
-            array,
-            method,
-            generateArray,
-            sortMethod } = this.props;
+        
+        const {array, method, generateArray, sortMethod,} = this.props;
 
         return (
             <div className="toolbar-wrap">
@@ -116,15 +107,7 @@ class Toolbar extends React.Component {
     }
 }
 
-const mapStateToProps = ({
-    array,
-    method,
-    currentSorted
-    }) =>
-    ({
-    array,
-    method,
-    currentSorted,});
+const mapStateToProps = ({array, method,}) => ({array, method,});
 
 const mapDispatchToProps = () => dispatch => ({
     generateArray: (length) => {

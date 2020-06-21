@@ -20,8 +20,7 @@ class VisualizerMain extends Component {
                heapIndexes,} = this.props;
 
         const width = Math.floor(((0.8 * window.innerWidth) - 200 - array.length) / (array.length) ) - 1;
-        const arrWidth = `${width}px`
-
+        const arrWidth = `${width}px`;
 
         return (
             <div id="wrap" className="wrap">
