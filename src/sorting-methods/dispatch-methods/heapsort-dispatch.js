@@ -8,12 +8,8 @@ function passHeapSortToDispatch(sortActions, dispatch, array){
     const speed = 300 / array.length > 1 ? 300 / array.length : 1;
 
     if (!sortActions.length) {
-
-        dispatch(setHeapIndexes(array.map((num, index) => index)));
-        setTimeout(() => {
-          dispatch(setHeapIndexes([]));
-        }, speed);
-
+        setTimeout(() => {dispatch(setCurrentSorted(array.map((num, index) => index)));}
+        , speed);
         return;
       }
 

@@ -6,21 +6,14 @@ import { setMerge } from "../../reducers/mergesort";
 
 function passMergeSortToDispatch(sortActions, dispatch, array) {
 
-    //set speed again - maybe move outside the functions
     const speed = 300 / array.length > 1 ? 300 / array.length : 1;
     
-    //if no actions are stored, render the array for the final time before exit
     if (!sortActions.length){
-  
-      dispatch(setMerge(array.map((num, index) => index)));
-      setTimeout(() => {dispatch(setMerge([]));
-      dispatch(setCurrentSorted(array.map((num, index) => index)));
-          }, speed);
-    
-      return;
+        setTimeout(() => {dispatch(setCurrentSorted(array.map((num, index) => index)));}
+        , speed);
+        return;
     }
-  
-    //set relevant actions based on what is stored
+
     let dispatchFunction = sortActions[0].length > 3 ?
         setArray : sortActions[0].length === 3 && typeof sortActions[0][2] === "boolean" || sortActions[0].length === 0 ?
           setSwappingElements : sortActions[0].length === 2 && typeof sortActions[0][0] === "boolean" ?
@@ -38,7 +31,6 @@ function passMergeSortToDispatch(sortActions, dispatch, array) {
   
     }
     else{
-  
       dispatch(dispatchFunction(sortActions.shift()));
     }
   

@@ -4,7 +4,6 @@ function heapsort(array, dispatch){
 
     let sortActions = [];
     sortActions.push(array.slice(0));
-    console.log("heapsort called");
 
     buildMaxHeap(array, sortActions);
 
@@ -21,11 +20,7 @@ function heapsort(array, dispatch){
         sortActions.push([true, lastItem]);
         lastItem--;
     }
-
-    sortActions.push([true, 0]);
-    console.log(array);
     passHeapSortToDispatch(sortActions, dispatch, array);
-    
 };
 
 function buildMaxHeap(array, sortActions) {
