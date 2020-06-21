@@ -1,61 +1,46 @@
+/* wrap whole toolbar */
 .toolbar-wrap{
     position: relative;
     left: 2.5%;
-
     width: 100%;
     height: 60px;
-
     margin-left: 0;
     padding-left: 0;
-    
     border-radius: 10px;
-
     text-align: left;
-    
 }
-
+/* divide into two parts */
 .array-left{
-    display: inline-block;
-    
+    display: inline-block;    
     margin-left: 2.5%;
     width: 50%;
 }
-
 .array-right{
-    display: inline-block;
-    
+    display: inline-block;    
     width: 40%;
     text-align: right;
 }
-
+/* element CSS */
 .item{
     color: white;
     width: auto;
-
     display: inline-block;
     text-align: center;
-
     margin-left: 0;
     margin-right: 0;
     margin-top: 15px;
-
     font-weight: 200;
     font-size: 17px;
 }
-
 input{
-    display: inline-block;
-    
+    display: inline-block;   
     cursor: pointer;
-    
     max-width: 100px;
     margin: 0;
     margin-left: 10px;
 }
-
 .regularButton{
-    display:inline-block;
-    
+    display:inline-block;   
     padding:0.46em 1.6em;
     border: 1px solid #ff4f00;
     margin:0 0.5em 0.5em 0;
@@ -67,7 +52,6 @@ input{
     color:white;
     text-align:center;
 }
-
 .activeButton{
     color:#61dafb;
     border-color:#61dafb;
@@ -81,19 +65,16 @@ input{
     background-color:black;
     text-align:center;
 }
-
 button:hover{
     color:#61dafb;
     border-color:#61dafb;
     cursor: pointer;
 }
-
 .resize:hover button{
     cursor: initial;
     color:#61dafb;
     border-color:#61dafb;
 }
-
 @media all and (max-width:30em){
     button{
         display:block;

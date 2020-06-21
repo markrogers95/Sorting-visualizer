@@ -11,6 +11,7 @@
   width: 100%;
 }
 
+/* title wrap CSS */
 .title-wrap{
   top: 2%;
   position: relative;
@@ -18,42 +19,35 @@
   text-align: center;
   max-height: 100px;
 }
-
 .title{
   position: relative;
   height: auto;
   width: auto;
-
   margin: 10px 0 15px 0;
-  
   color: white;
   font-weight: 300;
   font-size: 42px;
-
   border: 1px solid #ff4f00;
   border-radius: 10px;
-    
   padding: 0 0 7px 0;
 }
-
+/* sub dividers */
 .left{
   display: inline-block;
   width: 50%;
   text-align: left;
 }
-
 .right{
   position: relative;
   display: inline-block;
   width: 50%;
   text-align: right;
 }
-
+/* titles */
 .title.left{
   margin-left: 10%;
   text-align: center;
 }
-
 .title.right{
   margin-right: 11%;
   text-align: center;

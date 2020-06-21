@@ -1,3 +1,5 @@
+
+/* Visualizer wrap */  
 .wrap {
     position: relative;
     bottom: 0;
@@ -9,7 +11,6 @@
     text-align: center;
     vertical-align: bottom;
 }
-  
 .array {
     position: relative;
     display: inline-block;
