@@ -1,4 +1,4 @@
-import {passMergeSortToDispatch} from "./sortingDispatch";
+import {passMergeSortToDispatch} from "./dispatch-methods/mergesort-dispatch";
 
 function mergePickUp(array, dispatch){
 

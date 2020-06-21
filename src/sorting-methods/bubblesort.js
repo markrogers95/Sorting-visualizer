@@ -1,4 +1,4 @@
-import {passBubbleSortToDispatch} from "./sortingDispatch";
+import {passBubbleSortToDispatch} from "./dispatch-methods/bubble-dispatch";
 
 function bubbleSort(array, dispatch) {
   

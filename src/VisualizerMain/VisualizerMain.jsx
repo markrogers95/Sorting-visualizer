@@ -16,7 +16,8 @@ class VisualizerMain extends Component {
                currentSorted,
                merge,
                indices,
-               pivot,} = this.props;
+               pivot,
+               heapIndexes,} = this.props;
 
         const width = Math.floor(((0.8 * window.innerWidth) - 200 - array.length) / (array.length) ) - 1;
         const arrWidth = `${width}px`
@@ -25,12 +26,14 @@ class VisualizerMain extends Component {
         return (
             <div id="wrap" className="wrap">
               { array.map((value, idx) => {
-                  const backgroundColor = swappingElements.includes(idx) ?
-                  "#F603A3" : compareElements.includes(idx) || 
-                              indices.includes(idx) || merge.includes(idx) ?
+                  const backgroundColor = currentSorted.includes(idx) ?   
+                  "#61dafb" : swappingElements.includes(idx) ?
+                  "#F603A3" : compareElements.includes(idx)
+                           || indices.includes(idx) 
+                           || merge.includes(idx) 
+                           || heapIndexes.includes(idx) ?
                   "#39ff14" : pivot === idx ?
-                  "#FFFFFF" : currentSorted.includes(idx) ?   
-                  "#61dafb" : "#ff4f00";
+                  "#FFFFFF" : "#ff4f00";
 
                 return (
                     <div
@@ -56,6 +59,7 @@ const mapStateToProps = ({
     merge,
     indices,
     pivot,
+    heapIndexes,
 }) =>
 ({array,
   compareElements,
@@ -63,7 +67,8 @@ const mapStateToProps = ({
   currentSorted,
   merge,
   indices,
-  pivot,});
+  pivot,
+  heapIndexes,});
 
 const mapDispatchToProps = () => dispatch => ({});
 

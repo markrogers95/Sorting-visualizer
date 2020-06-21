@@ -1,4 +1,4 @@
-import {passQuickSortToDispatch} from "./sortingDispatch";
+import {passQuickSortToDispatch} from "./dispatch-methods/quicksort-dispatch";
 
 function quicksortPickup(array, dispatch){
 

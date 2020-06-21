@@ -7,6 +7,7 @@ import { swappingElements } from "./swap";
 import { currentSorted } from "./sorted";
 import { merge } from "./mergesort";
 import { indices, pivot } from "./quicksort";
+import { heapIndexes } from "./heapsort";
 
 export default combineReducers({
     array, 
@@ -17,4 +18,5 @@ export default combineReducers({
     merge,
     indices,
     pivot,
+    heapIndexes,
 });

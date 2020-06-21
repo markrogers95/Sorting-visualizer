@@ -8,8 +8,10 @@ import { setCurrentSorted } from "../reducers/sorted";
 import bubblesort from "../sorting-methods/bubblesort";
 import mergePickUp from "../sorting-methods/mergesort";
 import quicksortPickUp from "../sorting-methods/quicksort";
+import heapsort from '../sorting-methods/heapsort';
 
 import "./Toolbar.css";
+
 
 class Toolbar extends React.Component {
 
@@ -144,7 +146,8 @@ const mapDispatchToProps = () => dispatch => ({
         
         let sortOption = method === "bubblesort" ? bubblesort :
                 method === "mergesort" ? mergePickUp : 
-                method === "quicksort" ? quicksortPickUp : null;
+                method === "quicksort" ? quicksortPickUp :
+                method === "heapsort" ? heapsort : null;
 
         dispatch(setCurrentSorted([]));
         
