@@ -9,8 +9,10 @@ import bubblesort from "../sorting-methods/bubblesort";
 import mergePickUp from "../sorting-methods/mergesort";
 import quicksortPickUp from "../sorting-methods/quicksort";
 import heapsort from '../sorting-methods/heapsort';
+import radixsort from "../sorting-methods/radix-sort";
 
 import "./Toolbar.css";
+
 
 
 class Toolbar extends React.Component {
@@ -73,6 +75,13 @@ class Toolbar extends React.Component {
                     </div> : null}
                 </div>
                 <div className = "array-right">
+                <div className = "item">
+                        <button
+                            onClick = {() => this.handleClick("radixsort")}
+                            className={this.props.method === "radixsort" ? "activeButton" : "regularButton" } >
+                                radix-sort
+                        </button>
+                    </div>
                     <div className = "item">
                         <button
                             onClick = {() => this.handleClick("mergesort")}
@@ -130,7 +139,8 @@ const mapDispatchToProps = () => dispatch => ({
         let sortOption = method === "bubblesort" ? bubblesort :
                 method === "mergesort" ? mergePickUp : 
                 method === "quicksort" ? quicksortPickUp :
-                method === "heapsort" ? heapsort : null;
+                method === "heapsort" ? heapsort :
+                method === "radixsort" ? radixsort : null;
 
         dispatch(setCurrentSorted([]));
         
