@@ -1,79 +1,83 @@
 import {passRadixSortToDispatch} from "./dispatch-methods/radix-sort-dispatch";
 
-function getDigit(num, nth){
-
-    var digit = 0;
-
-    while(nth--){
-        digit = num % 10
-        num = Math.floor((num - digit) / 10)
-    }
-
-    return digit;
-}
-  
 function radixsort(array, dispatch){
 
-    var max = Math.floor(Math.log10(Math.max.apply(Math,array))),
-        digitBuckets = [],
-        idx = 0,
-        animationArray = [],
-        sortActions = [];
-    
+    let sortActions = [];
+
+    sortActions.push(array.slice(0));
+
+    if (array.length === 0) {
+      return array;
+    }
+  
+    let radix = 10;
+  
+    let minValue = array[0],
+        maxValue = array[0];
+
+    for (var i = 1; i < array.length; i++) {
+
+        if (array[i] < minValue){
+
+            minValue = array[i];
+        }
+        else if (array[i] > maxValue){
+            maxValue = array[i];
+        }
+    }
+
+    var exponent = 1;
+    while ((maxValue - minValue) / exponent >= 1) {
+        
+        array = countingSortByDigit(array, radix, exponent, minValue, sortActions);
+        exponent *= radix;
+    }
+
+    for (let i = 0; i < array.length; i++){
+        sortActions.push([true, i]);
+    }
+
+    passRadixSortToDispatch(sortActions, dispatch, array);
+
+    return array;
+}
+
+function countingSortByDigit(array, radix, exponent, minValue, sortActions) {
+    var i;
+    var bucketIndex;
+    var buckets = new Array(radix);
+    var output = new Array(array.length);
+  
+    for (i = 0; i < radix; i++) {
+      buckets[i] = 0;
+    }
+  
+    for (i = 0; i < array.length; i++) {
+        sortActions.push(i);
+      bucketIndex = Math.floor(((array[i] - minValue) / exponent) % radix);
+      buckets[bucketIndex]++;
+    }
+  
+  
+    for (i = 1; i < radix; i++) {
+      buckets[i] += buckets[i - 1];
+    }
+  
+  
+    for (i = array.length - 1; i >= 0; i--) {
+      bucketIndex = Math.floor(((array[i] - minValue) / exponent) % radix);
+      output[--buckets[bucketIndex]] = array[i];
+      
+      sortActions.push(array.slice(0,i).concat(output[i]).concat(array.slice(i+1)));
+      
+    }
+  
+    for (i = 0; i < array.length; i++) {        
+        array[i] = output[i];
+    }
     sortActions.push(array.slice(0));
   
-    for(var i = 0; i < max + 1; i++){
-        
-        animationArray = [];
-        
-        digitBuckets = [];
-        
-        for(var j = 0; j < array.length ;j++){
-
-            sortActions.push(j);            
-            var digit = getDigit(array[j], i+1);
-
-            digitBuckets[digit] = digitBuckets[digit] || [];
-            digitBuckets[digit].push(array[j]);
-            
-            if (i === max){
-                sortActions.push([true, j]);
-            }
-        }
-
-        for (let i = 0; i < digitBuckets.length; i++){
-
-            if (digitBuckets[i]){
-
-                for ( let j = 0; j < digitBuckets[i].length; j++){
-
-                    animationArray.push(digitBuckets[i][j]);
-                }
-            }
-        }
-        sortActions.push(animationArray.slice(0));
-
-        animationArray=[]
-
-        
-        idx = 0;
-        
-        for(var t = 0; t < digitBuckets.length; t++){
-
-            if(digitBuckets[t] && digitBuckets[t].length > 0){
-
-                for(j = 0;j<digitBuckets[t].length;j++){
-                    
-                    array[idx++] = digitBuckets[t][j];
-                    sortActions.push(array.slice(0));
-                }
-            }
-        }
-        
-    }
-    console.log(array);
-    passRadixSortToDispatch(sortActions, dispatch, array);
-    return array
-}
+    return array;
+  }
 
 export default radixsort;
