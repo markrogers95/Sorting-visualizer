@@ -50,28 +50,52 @@ function countingSortByDigit(array, radix, exponent, minValue, sortActions) {
   
     for (i = 0; i < radix; i++) {
       buckets[i] = 0;
+      output[i] = 0;
     }
   
     for (i = 0; i < array.length; i++) {
-        sortActions.push(i);
+      sortActions.push(i);
       bucketIndex = Math.floor(((array[i] - minValue) / exponent) % radix);
       buckets[bucketIndex]++;
     }
-  
+
+    let idx = 0,
+    bucketArray = [];
+    
+    for (let k = 0; k < buckets.length; k++){
+      bucketArray.push(idx);
+      idx += buckets[k];
+    }
+    console.log("BUCKET Re " + buckets);
+    console.log("BUCKET " + bucketArray);
+
+    bucketArray.push(true);
+    sortActions.push(bucketArray);
   
     for (i = 1; i < radix; i++) {
       buckets[i] += buckets[i - 1];
     }
   
-  
     for (i = array.length - 1; i >= 0; i--) {
       bucketIndex = Math.floor(((array[i] - minValue) / exponent) % radix);
       output[--buckets[bucketIndex]] = array[i];
       
-      sortActions.push(array.slice(0,i).concat(output[i]).concat(array.slice(i+1)));
+      let animationArray = [];
       
+      for (let j = 0; j < array.length; j++){
+        
+        if (output[j] === 0){
+          animationArray[j] = array[j];
+        }
+        else{
+          animationArray[j] = output[j];
+        }
+      }
+      
+      sortActions.push(animationArray.slice(0));
     }
-  
+    sortActions.push([]);
+
     for (i = 0; i < array.length; i++) {        
         array[i] = output[i];
     }

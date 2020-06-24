@@ -14,7 +14,7 @@ function passHeapSortToDispatch(sortActions, dispatch, array){
       }
 
       let dispatchFunction = sortActions[0].length > 3 ?
-          setArray : sortActions[0].length === 3 && typeof sortActions[0][2] === "boolean" || !sortActions[0].length ?
+          setArray : sortActions[0].length === 5 && typeof sortActions[0][5] === "boolean" || !sortActions[0].length ?
             setSwappingElements : sortActions[0].length === 2 && typeof sortActions[0][0] === "boolean" ?
               setCurrentSorted : setHeapIndexes;
 
